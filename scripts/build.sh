@@ -8,9 +8,10 @@ cd "${COZE_WORKSPACE_PATH}"
 # Vercel 环境使用官方 npm registry
 export npm_config_registry="https://registry.npmjs.org/"
 
-# 清理缓存
-rm -rf node_modules .next .vercel
+# 清理所有缓存
+rm -rf node_modules .next .vercel .pnpm-store
 rm -f pnpm-lock.yaml
+pnpm store prune 2>/dev/null || true
 
 echo "Installing dependencies..."
 pnpm install
