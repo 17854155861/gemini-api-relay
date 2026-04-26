@@ -5,6 +5,9 @@ COZE_WORKSPACE_PATH="${COZE_WORKSPACE_PATH:-$(pwd)}"
 
 cd "${COZE_WORKSPACE_PATH}"
 
+# Vercel 环境使用官方 npm registry
+export npm_config_registry="https://registry.npmjs.org/"
+
 echo "Installing dependencies..."
 pnpm install --prefer-frozen-lockfile --prefer-offline --loglevel debug --reporter=append-only
 # 强制安装 devDependencies（Vercel 默认不安装）
