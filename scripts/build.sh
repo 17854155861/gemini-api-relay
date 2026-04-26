@@ -8,8 +8,12 @@ cd "${COZE_WORKSPACE_PATH}"
 # Vercel 环境使用官方 npm registry
 export npm_config_registry="https://registry.npmjs.org/"
 
+# 清理缓存
+rm -rf node_modules .next .vercel
+rm -f pnpm-lock.yaml
+
 echo "Installing dependencies..."
-pnpm install --prefer-frozen-lockfile --prefer-offline --loglevel debug --reporter=append-only
+pnpm install
 # 强制安装 devDependencies（Vercel 默认不安装）
 pnpm install --include=dev
 
