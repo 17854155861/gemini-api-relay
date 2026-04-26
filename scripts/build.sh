@@ -7,6 +7,8 @@ cd "${COZE_WORKSPACE_PATH}"
 
 echo "Installing dependencies..."
 pnpm install --prefer-frozen-lockfile --prefer-offline --loglevel debug --reporter=append-only
+# 强制安装 devDependencies（Vercel 默认不安装）
+pnpm install --include=dev
 
 echo "Building the Next.js project (standalone mode)..."
 pnpm next build
